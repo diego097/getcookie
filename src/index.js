@@ -3,6 +3,7 @@ const app = express();
 const http = require('http');
 const server = http.createServer(app);
 const cors = require("cors");
+const PORT = process.env.PORT || 3030;
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -13,6 +14,6 @@ app.get('/', (req, res) => {
 });
 app.use("/api/v1", require("./api/v1/routes/api.routes.js"));
 
-server.listen(9000, () => {
-  console.log('listening on 9000');
+server.listen(PORT, () => {
+  console.log(`server started on port ${PORT}`);
 });
